@@ -39,14 +39,17 @@ def test_index(client):
     response = client.get("/", content_type="html/text")
     assert response.status_code == 200
 
+
 def test_search(client):
     response = client.get("/search/")
     assert response.status_code == 200
+
 
 def test_database(client):
     """initial test. ensure that the database exists"""
     tester = Path("test.db").is_file()
     assert tester
+
 
 def test_delete_message(client):
     """Ensure the messages are being deleted"""
@@ -57,6 +60,7 @@ def test_delete_message(client):
     rv = client.get("/delete/1")
     data = json.loads(rv.data)
     assert data["status"] == 1
+
 
 def test_empty_db(client):
     """Ensure database is blank"""
@@ -87,6 +91,7 @@ def test_messages(client):
     assert b"No entries here so far" not in rv.data
     assert b"&lt;Hello&gt;" in rv.data
     assert b"<strong>HTML</strong> allowed here" in rv.data
+
 
 '''
 import json

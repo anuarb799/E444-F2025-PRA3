@@ -5,7 +5,7 @@ from flask_sqlalchemy import SQLAlchemy
 basedir = Path(__file__).resolve().parent
 
 DATABASE = "flaskr.db"
-url = os.getenv('DATABASE_URL', f'sqlite:///{Path(basedir).joinpath(DATABASE)}')
+url = os.getenv("DATABASE_URL", f"sqlite:///{Path(basedir).joinpath(DATABASE)}")
 
 if url.startswith("postgres://"):
     url = url.replace("postgres://", "postgresql://", 1)
